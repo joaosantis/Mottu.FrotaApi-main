@@ -85,8 +85,7 @@ Para executar o projeto completo, é necessário iniciar os 5 componentes.
 5.  Execute a **Célula 2 (Script Unificado)**.
 
 **Componente 6️⃣: Visualização**
-Abra o seu navegador e aceda a: http://localhost:8000
-O pátio irá carregar e (após os 30s de atraso do IoT) começará a ser preenchido com as motos detectadas pelo YOLO e atualizadas pelo IoT.
+
 
 1.  Abra o seu navegador e aceda a:
     **`http://localhost:8000`**
