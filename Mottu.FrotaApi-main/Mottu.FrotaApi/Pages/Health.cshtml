@@ -1,0 +1,75 @@
+@page "/health"
+@model dynamic
+@{
+    ViewData["Title"] = "API Health Status";
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <title>Status da API</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #0f172a;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .status {
+            font-size: 1.2rem;
+            padding: 15px 30px;
+            border-radius: 10px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        .healthy {
+            background-color: #16a34a;
+            color: #fff;
+        }
+        .unhealthy {
+            background-color: #dc2626;
+            color: #fff;
+        }
+        .unknown {
+            background-color: #facc15;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <h1>🩺 Status da API</h1>
+    <div id="status" class="status unknown">Carregando...</div>
+
+    <script>
+        async function checkHealth() {
+            const statusDiv = document.getElementById("status");
+            try {
+                const res = await fetch("/healthz");
+                if (res.ok) {
+                    statusDiv.textContent = "Healthy ✅";
+                    statusDiv.className = "status healthy";
+                } else {
+                    statusDiv.textContent = "Unhealthy ❌";
+                    statusDiv.className = "status unhealthy";
+                }
+            } catch {
+                statusDiv.textContent = "Offline 🚫";
+                statusDiv.className = "status unhealthy";
+            }
+        }
+
+        checkHealth();
+        setInterval(checkHealth, 5000); // Atualiza a cada 5 segundos
+    </script>
+</body>
+</html>

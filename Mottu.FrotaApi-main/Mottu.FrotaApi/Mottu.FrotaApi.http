@@ -1,0 +1,6 @@
+@Mottu.FrotaApi_HostAddress = http://localhost:5269
+
+GET {{Mottu.FrotaApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
